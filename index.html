@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <form onsubmit="sendEmail(); reset(); return false;">
+            <h3>FILL FORM NOW</h3>
+            <input type="text" name="name" id="name" placeholder="Your Name" required>
+            <input type="email" name="email" id="email" placeholder="Your E-mail" required>
+            <input type="text" name="number" id="number" placeholder="Your Contact Number" required>
+            <textarea name="message" id="message" rows="4" placeholder="Type Your Message Here" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function sendEmail(){
+            Email.send({
+    Host : "smtp.gmail.com",
+    Username : "yogiji.bjp.up@gmail.com",
+    Password : "RAGhav1234@",
+    To : document.getElementById("email").value, 
+    Bcc : 'raghav12115dsps@gmail.com', 
+    From : 'yogiji.bjp.up@gmail.com',
+    Subject : "Welcome to Elections : )",
+    Body : "Hi <b>" + document.getElementById("name").value + "</b><br>Thanks for filling form, 'I am Yogi Uttar Pradesh ka Cheif Minister'<br>Mujhe Koi bhi vote mat dena <br><br> Your contact number is <b>" + document.getElementById("number").value + "</b><br><br> Your Message is Written below <br><br><b>" + document.getElementById("message").value + "</b><br><br><br>Regards Yogi<br>UP ka CM<br>",
+
+    Attachments : [
+  	{
+  		name : "img.png",
+  		path:"https://shorturl.at/qPY06"
+  	}]
+
+}).then(
+  message => alert(message)
+);
+        }
+    </script>
+
+
+</body>
+</html>
